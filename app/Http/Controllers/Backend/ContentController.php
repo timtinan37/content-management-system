@@ -10,6 +10,16 @@ use Illuminate\Support\Arr;
 class ContentController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('backend.index', ['contents' => Content::paginate(10)]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -53,4 +63,17 @@ class ContentController extends Controller
         $content->save();
         return back()->with('status', 'Content created !');
     }
+
+   /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Models\Content  $content
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Content $content)
+    {
+        $content->update(['is_published' => !$content->is_published]);
+        return back()->with('status', 'Content publication status changed !');
+    }
+
 }

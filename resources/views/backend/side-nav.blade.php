@@ -7,6 +7,12 @@
           Create Content
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('contents.index') }}">
+          <span data-feather="list"></span>
+          Content List
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
