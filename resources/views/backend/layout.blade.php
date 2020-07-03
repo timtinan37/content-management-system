@@ -10,39 +10,26 @@
     
     <title>Ready Mart</title>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('backend/css/dashboard.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
   </head>
 
   <body>
     @include('backend.top-nav')
-    <div class="container-fluid">
-      <div class="row">
+    <div class="container">
+      <div class="row pb-5">
         @include('backend.side-nav')
         @include('backend.main')
       </div>
     </div>
+    @include('backend.footer')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script>
       feather.replace()
     </script>
+    @stack('scripts')
   </body>
 </html>

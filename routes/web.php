@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('backend.index');
-})->name('dashboard');
+Route::prefix('admin')->group(function ()
+{
+	Route::resource('/contents', 'Backend\ContentController')->except(['show', 'edit', 'destroy']);
+});
 
 Auth::routes(['register' => false]);
 
