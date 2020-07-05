@@ -11,15 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes(['register' => false]);
 
 Route::prefix('admin')->group(function ()
 {
-	Route::resource('/contents', 'Backend\ContentController')->except(['show', 'edit', 'destroy']);
+	Route::resource('contents', 'Backend\ContentController')->except(['show', 'edit', 'destroy'])->middleware('auth');
 });
 
-Auth::routes(['register' => false]);
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Frontend\ContentController@index')->name('landing');
+Route::get('/contents/{content}', 'Frontend\ContentController@show')->name('contents.show');

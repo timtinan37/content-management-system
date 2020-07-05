@@ -1,0 +1,1 @@
+<img src="{{ Storage::url($content->attachment) }}" class="img-fluid">
